@@ -3,47 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto-Profit System</title>
+    <title>Premium Deal-Finder | Autoapp</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-black text-white p-6 font-sans">
-    <div class="max-w-md mx-auto bg-gray-900 rounded-3xl p-8 border border-green-500 shadow-2xl mt-10">
-        <div class="flex justify-between items-center mb-10">
-            <h1 class="text-xl font-black text-green-500">AUTO-APP V1</h1>
-            <span class="bg-green-900 text-green-300 text-xs px-2 py-1 rounded animate-pulse">LIVE</span>
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <header class="bg-white border-b shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-extrabold text-blue-600">AUTOAPP <span class="text-gray-400">v2.1</span></h1>
+            <div id="status" class="flex items-center gap-2 text-[10px] font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> SYSTEM AKTIV
+            </div>
         </div>
-        
-        <div class="text-center mb-10">
-            <p class="text-gray-500 text-xs uppercase tracking-widest">Verfügbares Budget</p>
-            <h2 class="text-6xl font-mono font-bold mt-2" id="money">0,00 €</h2>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 max-w-lg">
+        <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl p-6 text-white shadow-xl mb-8">
+            <p class="text-blue-100 text-xs uppercase tracking-widest font-semibold">Dein Guthaben</p>
+            <div class="text-4xl font-bold my-2" id="money">0,00 €</div>
+            <div class="flex gap-2 mt-4">
+                <button onclick="manage('Auszahlen')" class="flex-1 bg-white/20 hover:bg-white/30 py-2 rounded-xl text-xs font-bold transition">Auszahlen</button>
+                <button onclick="manage('Details')" class="flex-1 bg-black/20 hover:bg-black/30 py-2 rounded-xl text-xs font-bold transition">Budget-Plan</button>
+            </div>
         </div>
 
-        <div class="space-y-4">
-            <button onclick="manage('Auszahlen')" class="w-full bg-green-600 hover:bg-green-700 py-4 rounded-2xl font-bold transition-all shadow-lg text-white">
-                💰 Auszahlen
-            </button>
-            <button onclick="manage('Reinvestieren')" class="w-full bg-gray-800 hover:bg-gray-700 py-4 rounded-2xl font-bold transition-all border border-gray-600 text-white">
-                🔄 Reinvestieren
-            </button>
+        <h3 class="text-sm font-bold text-gray-500 uppercase mb-4 tracking-tight">Top Empfehlungen der KI</h3>
+        <div id="deal-container" class="space-y-4">
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
+                <div class="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center text-2xl">📱</div>
+                <div class="flex-1">
+                    <p class="font-bold text-sm">Smartphone Angebote</p>
+                    <p class="text-blue-600 text-xs font-bold">Bis zu 15% Provision</p>
+                </div>
+                <button class="bg-blue-50 text-blue-600 px-4 py-2 rounded-lg text-xs font-bold">Link</button>
+            </div>
         </div>
-
-        <div class="mt-12 p-4 bg-black rounded-xl border border-gray-800">
-            <p class="text-[10px] text-gray-500 uppercase font-bold mb-2">System-Log:</p>
-            <div id="log" class="text-xs text-blue-400 font-mono">Scanne nach Provisionen...</div>
-        </div>
-    </div>
+    </main>
 
     <script>
-        function manage(typ) {
-            const ok = confirm("Möchtest du das Budget wirklich " + typ + "?");
-            if(ok) alert("Befehl bestätigt. Ich frage dich vor der nächsten Transaktion erneut.");
+        function manage(action) {
+            alert("Sicherheitsabfrage: Möchtest du " + action + " starten? Ich werde dich vor der Transaktion erneut fragen.");
         }
-        
-        // Simulierter Markt-Scan
-        setInterval(() => {
-            const logs = ["Suche Deals...", "Analysiere Klicks...", "Provision erkannt...", "Warte auf Bestätigung..."];
-            document.getElementById('log').innerText = logs[Math.floor(Math.random() * logs.length)];
-        }, 3000);
+        // Simulation der Markt-Suche
+        setTimeout(() => {
+            console.log("AdCell-Schnittstelle bereit...");
+        }, 1000);
     </script>
 </body>
 </html>
